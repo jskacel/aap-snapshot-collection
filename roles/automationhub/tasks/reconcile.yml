@@ -31,7 +31,7 @@
 
 - name: Set gateway credentials (OCP)
   ansible.builtin.set_fact:
-    _automationhub_gw_api_url: "http://{{ aap_instance_name | default('aap') }}-gateway-svc.{{ automationhub_ocp_namespace }}.svc.cluster.local"
+    _automationhub_gw_api_url: "http://{{ aap_instance_name | default('aap') }}.{{ automationhub_ocp_namespace }}.svc.cluster.local"
     _automationhub_gw_admin_pw: "{{ _automationhub_gw_admin_secret.resources[0].data.password | b64decode }}"
   no_log: "{{ not (disable_no_log | default(false) | bool) }}"
   when:
